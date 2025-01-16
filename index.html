@@ -1,16 +1,13 @@
 <html lang="en">
- <head>
-  <meta charset="utf-8"/>
-  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-  <title>
-   VCF Upload App
-  </title>
-  <script src="https://cdn.tailwindcss.com">
-  </script>
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet"/>
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&amp;display=swap" rel="stylesheet"/>
-  <style>
-   body {
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>VCF Upload App</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet"/>
+    <style>
+        body {
             font-family: 'Roboto', sans-serif;
         }
         .neon-border {
@@ -22,120 +19,92 @@
             color: #39ff14;
             text-shadow: 0 0 5px #39ff14, 0 0 10px #39ff14, 0 0 20px #39ff14, 0 0 40px #39ff14;
         }
-  </style>
- </head>
- <body class="bg-gray-900 text-white min-h-screen flex flex-col items-center justify-center relative">
-  <div class="container mx-auto p-4 relative z-10">
-   <div class="bg-gray-800 bg-opacity-75 p-6 rounded-lg shadow-lg text-center mb-8 neon-border">
-    <h1 class="text-3xl font-bold mb-4 neon-text">
-     Upload VCF File
-    </h1>
-    <p class="mb-6 neon-text">
-     Please upload your VCF file to proceed.
-    </p>
-    <form class="mb-4" id="uploadForm">
-     <input accept=".vcf" class="block w-full text-sm text-gray-500 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-gray-700 file:text-white hover:file:bg-gray-600" id="vcfFile" type="file"/>
-     <button class="mt-4 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full neon-text" type="submit">
-      Upload
-     </button>
-    </form>
-    <div id="phoneNumbers" class="mt-6 text-left neon-text">
+    </style>
+</head>
+<body class="bg-gray-900 text-white min-h-screen flex flex-col items-center justify-center relative">
+    <div class="container mx-auto p-4 relative z-10">
+        <div class="bg-gray-800 bg-opacity-75 p-6 rounded-lg shadow-lg text-center mb-8 neon-border">
+            <h1 class="text-3xl font-bold mb-4 neon-text">Upload VCF File</h1>
+            <p class="mb-6 neon-text">Please upload your VCF file to proceed.</p>
+            <form class="mb-4 flex flex-col items-center" id="uploadForm">
+                <input accept=".vcf" class="block w-full text-sm text-gray-500 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-gray-700 file:text-white hover:file:bg-gray-600" id="vcfFile" type="file"/>
+                <div class="flex mt-4">
+                    <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full neon-text mr-2" type="submit">Upload</button>
+                    <button id="copyButton" class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded-full neon-text" type="button" style="display: none;">Copy to Clipboard</button>
+                </div>
+            </form>
+            <div id="phoneNumbers" class="mt-6 text-left neon-text"></div>
+        </div>
+        <div class="bg-gray-800 bg-opacity-75 p-6 rounded-lg shadow-lg text-center mb-8 neon-border">
+            <h2 class="text-2xl font-bold mb-4 neon-text">About This App</h2>
+            <p class="mb-4 neon-text">This application allows you to upload a VCF file and extract all phone numbers from it. The extracted phone numbers are displayed in a list and can be copied to the clipboard in a JSON format.</p>
+            <p class="neon-text">Developed with love using Tailwind CSS, Font Awesome, and Google Fonts.</p>
+            <p class="neon-text font-bold mt-4">CODE BY CYBER DEXTER</p>
+        </div>
+        <div class="bg-gray-800 bg-opacity-75 p-6 rounded-lg shadow-lg text-center neon-border">
+            <h2 class="text-2xl font-bold mb-4 neon-text">Contact Us</h2>
+            <a class="mt-4 bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded-full inline-flex items-center neon-text" href="https://wa.me/94785274495" target="_blank">
+                <i class="fab fa-whatsapp mr-2"></i>Contact on WhatsApp
+            </a>
+        </div>
     </div>
-   </div>
-   <div class="bg-gray-800 bg-opacity-75 p-6 rounded-lg shadow-lg text-center mb-8 neon-border">
-    <h2 class="text-2xl font-bold mb-4 neon-text">
-     About This App
-    </h2>
-    <p class="mb-4 neon-text">
-     This application allows you to upload a VCF file and extract all phone numbers from it. The extracted phone numbers are displayed in a list and can be copied to the clipboard in a JSON format.
-    </p>
-    <p class="neon-text">
-     Developed with love using Tailwind CSS, Font Awesome, and Google Fonts.
-    </p>
-    <p class="neon-text font-bold mt-4">
-     CODE BY CYBER DEXTER
-    </p>
-   </div>
-   <div class="bg-gray-800 bg-opacity-75 p-6 rounded-lg shadow-lg text-center neon-border">
-    <h2 class="text-2xl font-bold mb-4 neon-text">
-     Contact Us
-    </h2>
-    <a class="mt-4 bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded-full inline-flex items-center neon-text" href="https://wa.me/94785274495" target="_blank">
-     <i class="fab fa-whatsapp mr-2">
-     </i>
-     Contact on WhatsApp
-    </a>
-   </div>
-  </div>
-  <div class="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none">
-   <video autoplay loop muted class="w-full h-full object-cover">
-    <source src="https://media-hosting.imagekit.io//f5bfc003079143e4/vecteezy_green-matrix-particle-fall-background-loop-animation_3663146.mp4?Expires=1831638690&Key-Pair-Id=K2ZIVPTIP2VGHC&Signature=T-9yrvE5uFkSASjlh~ZennMikZtwSJDQDlzExK0fsb8~vN4Ic4zG-6cCyUeIFMnqfF-iRp9W-r6jJOMLST5x4-AQkMMPZpHhtDcDn9MLKqOcyE92RvpZ8cH5nedY6lA9zcSiOWSk6o-iM6Q8TTDL4qhYkdENE1HOCPbm3kdsEHxwJ3etBqEn8mtOfGNXN50knbWVpDp0ZRDVNAPzPP2gzEmXpwoY5vQi-WYUrDdbaGD~wKBGppBxTfx0PQaszXLLBtStvoEbp61hprj3BVKeIzKRbIe2GRsjifDvAmH0U9ivK2figBjB4zVrpSIwdqRv1cCOSVHrwvTCYm2XypeBcQ__" type="video/mp4"/>
-    Your browser does not support the video tag.
-   </video>
-  </div>
-  <script>
-   document.getElementById('uploadForm').addEventListener('submit', function(event) {
-        event.preventDefault();
-        const fileInput = document.getElementById('vcfFile');
-        const file = fileInput.files[0];
-        if (file) {
-            const reader = new FileReader();
-            reader.onload = function(e) {
-                const text = e.target.result;
-                const phoneNumbers = extractPhoneNumbersFromVCF(text);
-                displayPhoneNumbers(phoneNumbers);
-                displayPhoneNumbersInCodeFormat(phoneNumbers);
-            };
-            reader.readAsText(file);
-        }
-    });
-
-    function extractPhoneNumbersFromVCF(vcfText) {
-        const phoneNumbers = [];
-        const lines = vcfText.split('\n');
-        lines.forEach(line => {
-            if (line.startsWith('TEL')) {
-                const number = line.split(':')[1].trim();
-                phoneNumbers.push(number);
+    <div class="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none">
+        <video autoplay loop muted class="w-full h-full object-cover">
+            <source src="https://media-hosting.imagekit.io//f5bfc003079143e4/vecteezy_green-matrix-particle-fall-background-loop-animation_3663146.mp4?Expires=1831638690&Key-Pair-Id=K2ZIVPTIP2VGHC&Signature=T-9yrvE5uFkSASjlh~ZennMikZtwSJDQDlzExK0fsb8~vN4Ic4zG-6cCyUeIFMnqfF-iRp9W-r6jJOMLST5x4-AQkMMPZpHhtDcDn9MLKqOcyE92RvpZ8cH5nedY6lA9zcSiOWSk6o-iM6Q8TTDL4qhYkdENE1HOCPbm3kdsEHxwJ3etBqEn8mtOfGNXN50knbWVpDp0ZRDVNAPzPP2gzEmXpwoY5vQi-WYUrDdbaGD~wKBGppBxTfx0PQaszXLLBtStvoEbp61hprj3BVKeIzKRbIe2GRsjifDvAmH0U9ivK2figBjB4zVrpSIwdqRv1cCOSVHrwvTCYm2XypeBcQ__" type="video/mp4"/>
+            Your browser does not support the video tag.
+        </video>
+    </div>
+    <script>
+        document.getElementById('uploadForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            const fileInput = document.getElementById('vcfFile');
+            const file = fileInput.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    const text = e.target.result;
+                    const phoneNumbers = extractPhoneNumbersFromVCF(text);
+                    displayPhoneNumbersInCodeFormat(phoneNumbers);
+                };
+                reader.readAsText(file);
             }
         });
-        return phoneNumbers;
-    }
 
-    function displayPhoneNumbers(phoneNumbers) {
-        const phoneNumbersContainer = document.getElementById('phoneNumbers');
-        phoneNumbersContainer.innerHTML = '';
-
-        phoneNumbers.forEach(number => {
-            const numberElement = document.createElement('p');
-            numberElement.textContent = number;
-            phoneNumbersContainer.appendChild(numberElement);
-        });
-    }
-
-    function displayPhoneNumbersInCodeFormat(phoneNumbers) {
-        const phoneNumbersContainer = document.getElementById('phoneNumbers');
-        const codeFormatContainer = document.createElement('div');
-        codeFormatContainer.classList.add('mt-6', 'text-left');
-        const codeElement = document.createElement('pre');
-        codeElement.classList.add('bg-gray-700', 'p-4', 'rounded-lg', 'overflow-x-auto', 'neon-text');
-        codeElement.textContent = JSON.stringify(phoneNumbers, null, 2);
-        codeFormatContainer.appendChild(codeElement);
-
-        const copyButton = document.createElement('button');
-        copyButton.classList.add('mt-4', 'bg-green-500', 'hover:bg-green-700', 'text-white', 'font-bold', 'py-2', 'px-4', 'rounded-full', 'neon-text');
-        copyButton.textContent = 'Copy to Clipboard';
-        copyButton.addEventListener('click', function() {
-            navigator.clipboard.writeText(codeElement.textContent).then(function() {
-                alert('Copied to clipboard!');
-            }, function(err) {
-                console.error('Could not copy text: ', err);
+        function extractPhoneNumbersFromVCF(vcfText) {
+            const phoneNumbers = [];
+            const lines = vcfText.split('\n');
+            lines.forEach(line => {
+                if (line.startsWith('TEL')) {
+                    const number = line.split(':')[1].trim();
+                    phoneNumbers.push(number);
+                }
             });
-        });
+            return phoneNumbers;
+        }
 
-        codeFormatContainer.appendChild(copyButton);
-        phoneNumbersContainer.appendChild(codeFormatContainer);
-    }
-  </script>
- </body>
+        function displayPhoneNumbersInCodeFormat(phoneNumbers) {
+            const phoneNumbersContainer = document.getElementById('phoneNumbers');
+            phoneNumbersContainer.innerHTML = '';
+
+            const codeFormatContainer = document.createElement('div');
+            codeFormatContainer.classList.add('mt-6', 'text-left');
+            const codeElement = document.createElement('pre');
+            codeElement.classList.add('bg-gray-700', 'p-2', 'rounded-lg', 'overflow-x-auto', 'neon-text', 'text-sm');
+            codeElement.textContent = JSON.stringify(phoneNumbers, null, 2);
+            codeFormatContainer.appendChild(codeElement);
+
+            const copyButton = document.getElementById('copyButton');
+            copyButton.style.display = 'inline-block';
+            copyButton.addEventListener('click', function() {
+                navigator.clipboard.writeText(codeElement.textContent).then(function() {
+                    alert('Copied to clipboard!');
+                }, function(err) {
+                    console.error('Could not copy text: ', err);
+                });
+            });
+
+            phoneNumbersContainer.appendChild(codeFormatContainer);
+        }
+    </script>
+</body>
 </html>
